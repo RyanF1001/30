@@ -1,0 +1,44 @@
+  <div id="add-form-container" class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="text-center">Solicitação de Equipamento</h1>
+      </div>
+      
+
+      <div id="form-box" class="col-md-12">
+        <h2>Preencha os dados da sua solicitação</h2>
+        
+        <!--  INSERÇÃO DE DADOS NO BANCO  -->
+        <form action="/jobs/add" method = "POST">
+          
+          <div class="form-group">
+            <label for="title">Equipamento solicitado:</label>
+            <input type="text" class="form-control" id="title" name="title" placeholder="Digite o nome do equipamento solicitado" required>
+          </div>
+
+          <div class="form-group">
+            <label for="solicitante">Solicitante:</label>
+            <input type="text" class="form-control" id="solicitante" name="solicitante" placeholder="Digite o nome da disciplina na qual o equipamento será utilizado" required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="disciplina">Disciplina:</label>
+            <input type="text" class="form-control" id="disciplina" name="disciplina" placeholder="Digite o nome da disciplina na qual o equipamento será utilizado" required></textarea>
+          </div>
+          
+          <div class="form-group">
+            <label for="local">Sala de aula:</label>
+            <input type="text" class="form-control" id="local" name="local" placeholder="Digite o nome / núnero da sala na qual o equipamento será utilizado" required>
+          </div>
+
+          <div class="form-group">
+            <label for="detalhes">Detalhes</label>
+            <textarea type="text" class="form-control" id="detalhes" name="detalhes" placeholder="Detalhe a prática acadêmica na qual o equipamento será utilizado."></textarea>
+          </div>
+
+          <input type="hidden" name="new_job" value="1">
+          <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+      </div>
+    </div>
+  </div>

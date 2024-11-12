@@ -1,0 +1,62 @@
+  <div id="top-container" class="container-fluid">
+    <h1 id="main-title" class="text-center">Busque pelo equipamento</h1>
+    <p id="main-subtitle" class="text-center">E Verifique se ele está em uso...</p>
+
+
+    <!--
+      Em action definimos a ação de definimos (onde ele age, e o método)
+      -->
+    <form id="search-form" class="form-inline" action="/" method="GET">
+      
+      <!--
+      Corresponde com req.query.job em app.js para fazer funcionar o mecanismo de busca na página
+      -->
+      <div class="form-group col-md-10">
+        <input type="text" class="form-control" id="job" name="job" placeholder="Digite o equipamento que está procurando...">
+      </div>
+      <div class="col-md-2">
+        <button type="submit" class="btn btn-primary">Procurar</button>
+      </div>
+    </form>
+  </div>
+
+
+  <main>
+    <div id="jobs-container" class="container">
+      <div class="row">
+        <div class="col-md-12">
+
+        {{#if search}}
+
+          <h2 id="job-list-title">Buscando Equipamentos: {{search}}</h2>
+        {{else}}
+          <h2 id="job-list-title">Equipamentos em uso: </h2>
+        {{/if}}
+        <ul id="job-list" class="list-group">
+
+            <!--
+             Esse each funciona como um for, para imprimir na tela as entradas do banco de dados
+            se conecta com 
+            // busca as jobs por ordem de criação (usando a aba createdAt, pelo sequelize)
+            em 
+            //routes;
+            no arquivo app.js
+            -->
+            {{#each jobs}}
+
+            <li class="list-group-item {{#if dataValues.new_job }}new-job{{/if}}">
+              <img src="/img/Fig.avif" alt="Company">
+              <p>Local / Sala: {{dataValues.local}}</p>
+              <p><h2>{{dataValues.title}}</h2></p> 
+              <p>Solicitante: {{dataValues.solicitante}} </p>
+              <span class="new-job-label">Em Uso</span>
+              <a class="btn btn-primary" href = "/jobs/view/{{dataValues.id}}">Ver requisição</a>
+            </li>
+
+            {{/each}}
+
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
